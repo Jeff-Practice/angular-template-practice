@@ -1,0 +1,30 @@
+<ng-template #Teacher>
+  <h1>Teacher</h1>
+  <form [formGroup]="accountForm">
+    <label for="name">Name</label>
+    <input type="text" name="Name" id="Name" formControlName="name">
+  </form>
+</ng-template>
+<ng-template #Student>
+  <h1>Student</h1>
+  <form [formGroup]="accountForm">
+    <div>
+      <label for="name">Name</label>
+      <input type="text" name="Name" id="Name" formControlName="name">
+    </div>
+    <div>
+      <label for="teacherCertification">TeacherCertification</label>
+      <input type="text" name="teacherCertification" id="teacherCertification" formControlName="TeacherCertification">
+    </div>
+  </form>
+</ng-template>
+
+<button (click)="changeRoleToTeacher()">Teacher</button>
+<button (click)="changeRoleToStudent()">Student</button>
+
+<ng-container *ngIf="getRole">
+  <div [ngTemplateOutlet]="getTemplate"></div>
+</ng-container>
+
+
+<pre>{{ accountForm.getRawValue() | json}}</pre>
